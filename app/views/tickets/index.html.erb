@@ -1,0 +1,18 @@
+<h1>Tickets</h1>
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Tags</td>
+        <td>Status</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% Ticket.all.each do |t| %>
+        <%= render 'tickets/ticket', ticket: t %>
+      <% end %>
+    </tbody>
+
+  </table>
+
+<%= link_to "New Ticket", new_ticket_path() %>

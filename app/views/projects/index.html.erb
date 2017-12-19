@@ -1,0 +1,35 @@
+<h1> Projects </h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th> Name</th>
+      <th class="number">Open Tickets</th>
+      <th class="number">Total Tickets</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @projects.each do |proj| %>
+      <tr>
+        <td>
+          <strong><%= link_to proj.name, project_path(proj)%></strong>
+          <%= proj.description%>
+        </td>
+        <td>
+          <%= proj.tickets.open.size %>
+        </td>
+        <td>
+          <%= proj.tickets.size %>
+        </td>
+      </tr>
+
+
+
+    <% end %>
+  </tbody>
+</table>
+
+  <%= link_to "New Project", new_project_path()%>

@@ -1,0 +1,21 @@
+<h1><%=@project.name%></h1>
+<p>
+  <%= @project.description %>
+</p>
+<%= link_to "Edit Project", edit_project_path(@project) %>
+
+<h1>Tickets</h1>
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Tags</td>
+        <td>Status</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.tickets.each do |t| %>
+        <%= render 'tickets/ticket', ticket: t %>
+      <% end %>
+    </tbody>
+  </table>
