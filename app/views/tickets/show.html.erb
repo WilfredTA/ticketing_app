@@ -6,3 +6,16 @@
 <% if logged_in? %>
   <%= link_to 'Edit', edit_ticket_path(@ticket) %>
 <% end %>
+
+<% @ticket.comments.each do |c| %>
+  <%= render 'comments/comment', comment: c %>
+<% end %>
+
+<%= form_for @comment do |f| %>
+<%= render 'shared/errors', obj: @comment %>
+  <%= f.label :body, "Add a comment" %>
+  <%= f.text_area :body%>
+  <%= f.hidden_field :ticket_id, :value => @ticket.id %>
+  <%= f.submit "Create Comment" %>
+
+<% end %>

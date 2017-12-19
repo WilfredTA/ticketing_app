@@ -31,11 +31,17 @@ class TicketsController < ApplicationController
   end
 
   def show
+
+    @comment = Comment.new
     @ticket = Ticket.find(params[:id])
   end
 
   def index
-
+    if params[:project]
+      @tickets = Ticket.where('project_id=?', [params[:project]])
+    else
+      @tickets = Ticket.all
+    end
   end
 
   def destroy

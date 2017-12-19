@@ -1,4 +1,11 @@
 <h1>Tickets</h1>
+<div>
+  Show tickets from
+  <%= form_tag tickets_path, method: :get do %>
+    <%= select_tag :project, options_from_collection_for_select(Project.all, :id, :name, params[:project]) %>
+    <%= submit_tag 'Update' %>
+  <% end %>
+</div>
   <table>
     <thead>
       <tr>
@@ -10,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Ticket.all.each do |t| %>
+      <% @tickets.each do |t| %>
         <%= render 'tickets/ticket', ticket: t %>
       <% end %>
     </tbody>
