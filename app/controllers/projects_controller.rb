@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  before_action :ensure_logged_in, except: [:index, :show]
   def new
     @project = Project.new
   end

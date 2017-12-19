@@ -2,7 +2,9 @@
 <p>
   <%= @project.description %>
 </p>
-<%= link_to "Edit Project", edit_project_path(@project) %>
+<% if logged_in? %>
+  <%= link_to "Edit Project", edit_project_path(@project) %>
+<% end %>
 
 <h1>Tickets</h1>
   <table>
@@ -11,6 +13,8 @@
         <td>Name</td>
         <td>Tags</td>
         <td>Status</td>
+        <td>Creator</td>
+        <td>Assginee</td>
       </tr>
     </thead>
     <tbody>

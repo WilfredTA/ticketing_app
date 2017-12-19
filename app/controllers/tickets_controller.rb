@@ -1,11 +1,12 @@
 class TicketsController < ApplicationController
+  before_action :ensure_logged_in, except: [:show, :index]
   def new
     @ticket = Ticket.new
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
-
+    @ticket.creator = current_user
     if @ticket.save
       flash[:success] = "New ticket has been created"
       redirect_to tickets_path
@@ -46,7 +47,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:project_id, :name, :body, :status_id, tag_ids: [])
+    params.require(:ticket).permit(:project_id, :name, :body, :status_id, :assignee_id, tag_ids: [])
   end
 
 end

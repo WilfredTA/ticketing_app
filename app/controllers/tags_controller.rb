@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :ensure_logged_in, except: :index
   def create
     @tag = Tag.new(tag_params)
 

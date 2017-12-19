@@ -9,7 +9,17 @@
     <%= ticket.status.name %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_ticket_path(ticket) %>
-    <%= link_to 'Delete', ticket_path(ticket), method: :delete%>
+    <%= ticket.creator.name%>
+  </td>
+  <td>
+    <% if ticket.assignee%>
+      <%= ticket.assignee.name%>
+    <% end %>
+  </td>
+  <td>
+    <% if logged_in? %>
+      <%= link_to 'Edit', edit_ticket_path(ticket) %>
+      <%= link_to 'Delete', ticket_path(ticket), method: :delete%>
+    <% end %>
 
 </tr>

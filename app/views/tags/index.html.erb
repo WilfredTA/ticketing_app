@@ -12,8 +12,10 @@
       <tr>
         <td><%=t.name%></td>
         <td><%=t.tickets.size%></td>
-        <td><%= link_to "Edit", edit_tag_path(t)%> or
-            <%= link_to "Destroy", tag_path(t), method: :delete %></td>
+        <% if logged_in? %>
+          <td><%= link_to "Edit", edit_tag_path(t)%> or
+              <%= link_to "Destroy", tag_path(t), method: :delete %></td>
+        <% end %>
       </tr>
 
     <%end%>
@@ -21,4 +23,6 @@
 </table>
 
 
-<%= link_to "Create New Tag", new_tag_path() %>
+<% if logged_in? %>
+  <%= link_to "Create New Tag", new_tag_path() %>
+<% end %>

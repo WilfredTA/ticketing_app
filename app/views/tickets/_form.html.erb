@@ -20,6 +20,13 @@
   <%= f.label :tags %>
   <%= f.collection_select :tag_ids, Tag.all, :id, :name,{}, multiple: true %>
 </div>
+<div>
+  <%= f.label :assignee%>
+  <%= f.collection_select :assignee_id, User.all, :id, :name %>
+</div>
+
+
+</div>
 
 <%= f.submit ticket.new_record? ? "Create Ticket" : "Update Ticket" %>
 
