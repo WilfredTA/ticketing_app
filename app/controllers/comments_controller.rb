@@ -4,10 +4,14 @@ class CommentsController < ApplicationController
     @comment.creator = current_user
 
     if @comment.save
+      if params[:ticket_status]
+        @comment.ticket.status_id = params[:ticket_status]
+        @comment.ticket.save
+      end
       ticket = @comment.ticket
       redirect_to ticket_path(ticket)
     else
-
+      render ticket_path(ticket)
     end
   end
 

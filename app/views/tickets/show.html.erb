@@ -13,9 +13,16 @@
 
 <%= form_for @comment do |f| %>
 <%= render 'shared/errors', obj: @comment %>
+<div>
   <%= f.label :body, "Add a comment" %>
   <%= f.text_area :body%>
   <%= f.hidden_field :ticket_id, :value => @ticket.id %>
+</div>
+
+  <div>
+    <%= label_tag :ticket_status, "Update ticket status" %>
+    <%= select_tag :ticket_status, options_from_collection_for_select(Status.all, :id, :name, params[:ticket_status]), include_blank: "Do not change" %>
+  </div>
   <%= f.submit "Create Comment" %>
 
 <% end %>

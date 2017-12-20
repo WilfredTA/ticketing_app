@@ -6,22 +6,30 @@
     <%= submit_tag 'Update' %>
   <% end %>
 </div>
-  <table>
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Tags</td>
-        <td>Status</td>
-        <td>Creator</td>
-        <td>Assignee</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tickets.each do |t| %>
-        <%= render 'tickets/ticket', ticket: t %>
-      <% end %>
-    </tbody>
 
-  </table>
+<% if @tickets.any? %>
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Tags</td>
+          <td>Status</td>
+          <td>Creator</td>
+          <td>Assignee</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tickets.each do |t| %>
+          <%= render 'tickets/ticket', ticket: t %>
+        <% end %>
+      </tbody>
+    </table>
+<% else %>
+
+  <p>
+    There are no tickets yet!
+  </p>
+
+<% end %>
 
 <%= link_to "New Ticket", new_ticket_path() %>

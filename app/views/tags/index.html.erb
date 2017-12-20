@@ -11,7 +11,7 @@
     <% @tags.each do |t| %>
       <tr>
         <td><%=t.name%></td>
-        <td><%=t.tickets.size%></td>
+        <td><%= link_to t.tickets.size, tickets_path(tag: t.id)%></td>
         <% if logged_in? %>
           <td><%= link_to "Edit", edit_tag_path(t)%> or
               <%= link_to "Destroy", tag_path(t), method: :delete %></td>

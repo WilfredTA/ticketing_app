@@ -39,6 +39,8 @@ class TicketsController < ApplicationController
   def index
     if params[:project]
       @tickets = Ticket.where('project_id=?', [params[:project]])
+    elsif params[:tag]
+      @tickets = Ticket.joins(:tags).where('tags.id=?', params[:tag])
     else
       @tickets = Ticket.all
     end

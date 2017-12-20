@@ -4,6 +4,7 @@
 </p>
 <% if logged_in? %>
   <%= link_to "Edit Project", edit_project_path(@project) %>
+  <%= link_to "Delete Project", project_path(@project), method: :delete %>
 <% end %>
 
 <h1>Tickets</h1>
